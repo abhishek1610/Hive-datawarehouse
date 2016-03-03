@@ -1,0 +1,8 @@
+Sqoop file loading--
+
+sqoop import --connect jdbc:teradata://{host name or ip address}/Database=xyz --connection-manager 
+org.apache.sqoop.teradata.TeradataConnManager --username dbc --password dbc 
+--table EMPLOYEES --target-dir /user/hive/incremental -m 5
+
+
+Above sqoop command will basically load the table EMPLOYEES to hadoop - /user/hive/incremental folder using 5 mappers.
