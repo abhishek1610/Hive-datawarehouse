@@ -2,7 +2,14 @@ Sqoop file loading--
 
 sqoop import --connect jdbc:teradata://{host name or ip address}/Database=xyz --connection-manager 
 org.apache.sqoop.teradata.TeradataConnManager --username dbc --password dbc 
---table EMPLOYEES --target-dir /user/hive/incremental -m 5
+--table EMPLOYEES --target-dir /user/hive/basetable -m 5
 
 
 Above sqoop command will basically load the table EMPLOYEES to hadoop - /user/hive/incremental folder using 5 mappers.
+
+
+sqoop import --connect jdbc:teradata://{host name or ip address}/Database=retail --connection-manager org.apache.sqoop.teradata.TeradataConnManager 
+--username dbc --password dbc --target-dir /user/hive/incremental_table -m 5 
+--query 'select * from EMPLOYEES where modified_date > '2015-12-10''
+
+Basically we are trying to fetch the changed and new records only using above command.(by giving modified_date > '2015-12-10'(basically previous date)
