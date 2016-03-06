@@ -1,0 +1,14 @@
+//Basically ceate a atble based on incremental data got from sqoop
+
+CREATE TABLE incremental_table (
+id string,
+name string,
+company string,
+dept string,
+age string,
+loc string,
+modified_date string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ‘,’
+LOCATION ‘/user/hive/incremental_table1’;
