@@ -1,0 +1,13 @@
+
+CREATE VIEW final_view AS
+SELECT t1.* FROM
+(SELECT * FROM base_table
+UNION ALL
+SELECT * FROM incremental_table) t1
+JOIN
+(SELECT id, max(modified_date) max_modified FROM
+(SELECT * FROM base_table
+UNION ALL
+SELECT * FROM incremental_table) t2
+GROUP BY id) s
+ON t1.id = s.id AND t1.modified_date = s.max_modified;
