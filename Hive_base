@@ -1,0 +1,15 @@
+//We will be creating a base table using the import from the sqoop command
+//Below we are creating a base table using the location /user/hive/emp
+
+CREATE TABLE base_table (
+id string,
+name string,
+company string,
+dept string,
+age string,
+loc string,
+modified_date string
+)
+ROW FORMAT DELIMITED
+FIELDS TERMINATED BY ‘,’
+LOCATION ‘/user/hive/emp’;
